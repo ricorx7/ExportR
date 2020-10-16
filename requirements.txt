@@ -1,0 +1,10 @@
+pyqt5
+qdarkstyle
+pyinstaller
+pytest
+# Needed to run rti_python unittest
+PyCRC
+pandas
+pynmea2
+obsub
+scipy
