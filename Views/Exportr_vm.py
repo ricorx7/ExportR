@@ -5,7 +5,7 @@ import qdarkstyle
 import logging
 import threading
 import os
-from . import AnalyzeFileWorker, ExportNetCdfFileWorker, Exportr_view
+from . import Exportr_view
 from rti_python.Writer.rti_netcdf import RtiNetcdf
 from rti_python.Ensemble.Ensemble import Ensemble
 
@@ -98,6 +98,7 @@ class ExportrVM(Exportr_view.Ui_ExporterView, QWidget):
         self.filesListWidget.clear()
 
         # Update the progress bar
+        self.scanFilesProgressBar.setValue(0)
         self.scanFilesProgressBar.setMaximum(len(self.selected_files))
 
         # Reset the index
@@ -248,6 +249,14 @@ class ExportrVM(Exportr_view.Ui_ExporterView, QWidget):
         logging.debug("Set File Size: " + str(file_size))
 
     def export_files(self):
+        """
+        Export the files to netCDF.  This will start the thread for the first file.
+        When that thread is complete, it passes a signal which starts the next thread.
+
+        Also reset all the progess bars.
+        :return:
+        :rtype:
+        """
         # Clear the progress bars
         self.scanFilesProgressBar.setValue(0)
         self.scanFilesProgressBar.setMaximum(len(self.analzye_results))

@@ -1,0 +1,5 @@
+ExportR Changelog
+
+ExportR - 1.0.0:
+ - Initial release
+ - Exports netCDF 4 CF

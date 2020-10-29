@@ -3,10 +3,10 @@ import traceback
 from PyQt5 import QtGui, QtWidgets
 from Views.Exportr_vm import ExportrVM
 import logging
-logging.basicConfig(format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
-    datefmt='%Y-%m-%d:%H:%M:%S',
-    level=logging.DEBUG)
-#logging.getLogger().setLevel(logging.DEBUG)
+#logging.basicConfig(format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
+#    datefmt='%Y-%m-%d:%H:%M:%S',
+#    level=logging.DEBUG)
+
 
 class MainWindow(QtWidgets.QMainWindow):
     """

@@ -8,3 +8,4 @@ pandas
 pynmea2
 obsub
 scipy
+cftime
