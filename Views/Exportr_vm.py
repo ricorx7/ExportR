@@ -61,7 +61,6 @@ class ExportrVM(Exportr_view.Ui_ExporterView, QWidget):
         self.sig_ensemble_progress.connect(self.export_ensemble_progress_sig_handler)
         self.sig_export_complete.connect(self.export_file_complete_sig_handler)
 
-
     def select_files(self):
         """
         Use the dialog box to select the files you would like to export.
@@ -96,6 +95,7 @@ class ExportrVM(Exportr_view.Ui_ExporterView, QWidget):
         """
         # Reset the analyze file results
         self.analzye_results.clear()
+        self.filesListWidget.clear()
 
         # Update the progress bar
         self.scanFilesProgressBar.setMaximum(len(self.selected_files))
@@ -345,11 +345,11 @@ class ExportrVM(Exportr_view.Ui_ExporterView, QWidget):
         # Increment the index
         self.export_file_index += 1
 
+        # Move the state
+        self.scanFilesProgressBar.setValue(self.scanFilesProgressBar.value() + 1)
+
         # Check if we have exported all the files
         if self.export_file_index >= len(self.analzye_results):
-            # Move to the complete state
-            self.scanFilesProgressBar.setValue(self.scanFilesProgressBar.value() + 1)
-
             # Show a dialog box that everything is exported and complete
             QMessageBox.question(self.parent, "Export Complete", "All files have been exported.", QMessageBox.Ok)
         else:
