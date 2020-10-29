@@ -1,11 +1,12 @@
 import sys
-
+import traceback
 from PyQt5 import QtGui, QtWidgets
-
-from Views.Exporter_vm import ExportrVM
-import qdarkstyle
-# import images_qr
-
+from Views.Exportr_vm import ExportrVM
+import logging
+logging.basicConfig(format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
+    datefmt='%Y-%m-%d:%H:%M:%S',
+    level=logging.DEBUG)
+#logging.getLogger().setLevel(logging.DEBUG)
 
 class MainWindow(QtWidgets.QMainWindow):
     """
@@ -15,8 +16,11 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, config=None):
         QtWidgets.QMainWindow.__init__(self)
 
-        # Initialize the pages
-        self.predictor = ExportrVM(self)
+        try:
+            # Initialize the pages
+            self.predictor = ExportrVM(self)
+        except Exception as ex:
+            logging.error("Error in application", ex)
 
         # Initialize the window
         self.main_window_init()
@@ -45,10 +49,21 @@ class MainWindow(QtWidgets.QMainWindow):
             event.ignore()
 
 
+def exception_hook(exctype, value, traceback):
+    sys.__excepthook__(exctype, value, traceback)
+    traceback_formated = traceback.format_exception(exctype, value, traceback)
+    traceback_string = "".join(traceback_formated)
+    print(traceback_string, file=sys.stderr)
+    sys.exit(1)
+
+
 if __name__ == '__main__':
+    sys.excepthook = exception_hook
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle("Mac")
 
     #app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
     MainWindow()
-    sys.exit(app.exec_())
+    ret = app.exec_()
+    print("event loop exited")
+    sys.exit(ret)

@@ -21,34 +21,88 @@
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
          <widget class="QPushButton" name="selectFilesButton">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Select Files</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QListWidget" name="filesListWidget"/>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>File Analyze Progress</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QProgressBar" name="fileAnalyzeProgressBar">
+            <property name="value">
+             <number>24</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QCheckBox" name="netcdfCheckBox">
+         <widget class="QLabel" name="fileScanLabel">
           <property name="text">
-           <string>netCDF</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
+           <string/>
           </property>
          </widget>
         </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Scanning Progress    </string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QProgressBar" name="scanFilesProgressBar">
+            <property name="value">
+             <number>24</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="filesListWidget"/>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string>Export Formats</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QCheckBox" name="netcdfCheckBox">
+             <property name="text">
+              <string>netCDF</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
         <item>
          <widget class="QPushButton" name="exportButton">
+          <property name="font">
+           <font>
+            <pointsize>20</pointsize>
+           </font>
+          </property>
           <property name="text">
            <string>Begin Export</string>
           </property>
