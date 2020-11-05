@@ -13,6 +13,8 @@ https://github.com/mmartini-usgs/ADCPy
 
 To run the application, run the mainwindow.py file.
 
+![App Image](http://rowetechinc.co/github_img/ExportR_app.png)
+
 # Testing the File
 I used Panoply software to test my created netCDF files.
 https://www.giss.nasa.gov/tools/panoply/download/
